@@ -33,9 +33,7 @@ install:
 jobs:
   include:
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Release CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=SHARED
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -43,9 +41,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Release CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=SHARED
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -53,9 +49,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Debug CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=SHARED
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -63,9 +57,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Debug CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=SHARED
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -73,9 +65,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Release CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=STATIC
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -83,9 +73,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Release CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=STATIC
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -93,9 +81,7 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
       env: BUILD_TYPE=Debug CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=STATIC
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -103,9 +89,71 @@ jobs:
       after_success:
         - echo "success"
     - stage: build
-      compiler:
-        - g++
-        - clang++
+      compiler: g++
+      env: BUILD_TYPE=Debug CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=STATIC
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Release CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=SHARED
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Release CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=SHARED
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Debug CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=SHARED
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: g++
+      env: BUILD_TYPE=Debug CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=SHARED
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Release CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=STATIC
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Release CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=STATIC
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
+      env: BUILD_TYPE=Debug CXX11_ENABLED=NO COMPILER=GCC LIBRARY_TYPE=STATIC
+      script:
+        - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+        - cd test-travis;./compile.sh build
+      after_success:
+        - echo "success"
+    - stage: build
+      compiler: clang++
       env: BUILD_TYPE=Debug CXX11_ENABLED=YES COMPILER=GCC LIBRARY_TYPE=STATIC
       script:
         - export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
