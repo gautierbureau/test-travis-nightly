@@ -9,6 +9,13 @@ addons:
     token:
       secure: ${SONAR_TOKEN}
 
+notifications:
+  email:
+    recipients:
+      - gautier.bureau@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
+
 install:
   # We checkout the right commit to test (either a push or a merge test during a pull request)
   # We could also either checkout TRAVIS_BRANCH for the push
