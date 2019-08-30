@@ -14,27 +14,10 @@ notifications:
     on_failure: always # default: always
 
 install:
-  - if: os = linux
   # We checkout the right commit to test (either a push or a merge test during a pull request)
   # We could also either checkout TRAVIS_BRANCH for the push
   # or use git fetch origin +refs/pull/PR_NUMBER/merge and git checkout FETCH_HEAD for the merge test of a pull request
-  - CHECKOUT_COMMIT=$(git rev-parse HEAD)
-  - echo $CHECKOUT_COMMIT
-  - echo TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST
-  - echo TRAVIS_PULL_REQUEST_BRANCH $TRAVIS_PULL_REQUEST_BRANCH
-  - echo TRAVIS_BRANCH $TRAVIS_BRANCH
-  - echo TRAVIS_EVENT_TYPE $TRAVIS_EVENT_TYPE
-  - echo TRAVIS $TRAVIS
-  - echo CI $CI
-  - BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  - echo $(git rev-parse --abbrev-ref HEAD)
-  - git_command="git clone --depth=50 https://github.com/gautierbureau/test-travis.git test-travis"
-  - git clone --depth=50 https://github.com/gautierbureau/test-travis.git test-travis
-  - echo $git_command
-  - (cd /tmp;wget https://github.com/google/googletest/archive/release-1.8.1.tar.gz;tar -xzf release-1.8.1.tar.gz;cd googletest-release-1.8.1;mkdir build;cd build;cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON ..;make;sudo make install)
-  - echo Linux
-  - sudo apt-get install gcovr realpath lcov
-  - gem install coveralls-lcov
+  - ./install.sh
 
 jobs:
   include:
