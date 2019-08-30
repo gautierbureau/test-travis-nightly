@@ -31,6 +31,10 @@ install:
   - git clone --depth=50 https://github.com/gautierbureau/test-travis.git test-travis
   - echo $git_command
   - (cd /tmp;wget https://github.com/google/googletest/archive/release-1.8.1.tar.gz;tar -xzf release-1.8.1.tar.gz;cd googletest-release-1.8.1;mkdir build;cd build;cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON ..;make;sudo make install)
+  if: os = linux
+    - echo Linux
+  if: os = osx
+    - echo macos
 
 jobs:
   include:
